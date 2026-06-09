@@ -2,9 +2,6 @@ const path = require("path");
 const fs = require("fs");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const dotenv = require("dotenv");
-
-dotenv.config();
 
 class CopyPublicDirPlugin {
   apply(compiler) {
