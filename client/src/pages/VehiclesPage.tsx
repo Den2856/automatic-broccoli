@@ -10,6 +10,7 @@ import {
   matchesVehicleFilters,
   type VehicleFilters,
 } from "../utils/vehicleFilters"
+import { apiUrl } from "../utils/api"
 import type { VehicleCard as VehicleCardData, VehicleListResponse } from "../types/vehicle"
 
 type LoadState = "idle" | "loading" | "success" | "error"
@@ -30,7 +31,7 @@ export default function VehiclesPage() {
         setLoadState("loading")
         setErrorMessage("")
 
-        const response = await fetch("/api/vehicles", {
+        const response = await fetch(apiUrl("/api/vehicles"), {
           signal: abortController.signal,
         })
 

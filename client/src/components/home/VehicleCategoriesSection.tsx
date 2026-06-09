@@ -5,8 +5,8 @@ import type { VehicleCategoryCard, VehicleCategoryResponse, } from "../../types/
 import { resolveAssetPath } from "../../utils/assets"
 import VehicleCategoriesSectionSkeleton from "../skeletons/VehicleCategoriesSectionSkeleton"
 import SectionHeading from "../ui/SectionHeading"
-
 import CarouselShell from "../ui/CarouselShell"
+import { apiUrl } from "../../utils/api"
 
 type LoadState = "idle" | "loading" | "success" | "error"
 
@@ -23,7 +23,7 @@ export default function VehicleCategoriesSection() {
         setLoadState("loading")
         setErrorMessage("")
 
-        const response = await fetch("/api/categories", {
+        const response = await fetch(apiUrl("/api/categories"), {
           signal: abortController.signal,
         })
 

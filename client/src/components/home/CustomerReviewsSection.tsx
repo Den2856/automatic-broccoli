@@ -8,6 +8,7 @@ import { resolveAssetPath } from "../../utils/assets"
 import CustomerReviewsSectionSkeleton from "../skeletons/CustomerReviewsSectionSkeleton"
 import SectionHeading from "../ui/SectionHeading"
 import CarouselShell from "../ui/CarouselShell"
+import { apiUrl } from "../../utils/api"
 
 type LoadState = "idle" | "loading" | "success" | "error"
 const testimonialImagePositionByName: Record<string, string> = {
@@ -32,7 +33,7 @@ export default function CustomerReviewsSection() {
         setLoadState("loading")
         setErrorMessage("")
 
-        const response = await fetch("/api/reviews", {
+        const response = await fetch(apiUrl("/api/reviews"), {
           signal: abortController.signal,
         })
 

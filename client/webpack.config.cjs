@@ -1,5 +1,6 @@
 const path = require("path");
 const fs = require("fs");
+const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 class CopyPublicDirPlugin {
@@ -51,6 +52,9 @@ module.exports = {
     ]
   },
   plugins: [
+    new webpack.DefinePlugin({
+      __API_BASE_URL__: JSON.stringify(process.env.API_BASE_URL || "")
+    }),
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, "index.html")
     }),

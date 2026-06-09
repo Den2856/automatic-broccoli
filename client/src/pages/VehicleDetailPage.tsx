@@ -10,6 +10,7 @@ import VehicleDetailSectionSkeleton from "../components/skeletons/VehicleDetailS
 import VehicleDetailContent from "../components/vehicles/VehicleDetailContent"
 import VehicleRelatedSection from "../components/vehicles/VehicleRelatedSection"
 import type { VehicleDetailPayload, VehicleDetailResponse } from "../types/vehicle"
+import { apiUrl } from "../utils/api"
 
 type LoadState = "idle" | "loading" | "success" | "error"
 
@@ -28,7 +29,7 @@ export default function VehicleDetailPage() {
         setErrorMessage("")
         setPayload(null)
 
-        const response = await fetch(`/api/vehicles/${slug}`, {
+        const response = await fetch(apiUrl(`/api/vehicles/${slug}`), {
           signal: abortController.signal,
         })
 

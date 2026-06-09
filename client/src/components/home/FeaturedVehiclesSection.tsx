@@ -6,6 +6,7 @@ import type {
 import FeaturedVehiclesSectionSkeleton from "../skeletons/FeaturedVehiclesSectionSkeleton"
 import SectionHeading from "../ui/SectionHeading"
 import VehicleCard from "../ui/VehicleCard"
+import { apiUrl } from "../../utils/api"
 
 type LoadState = "idle" | "loading" | "success" | "error"
 
@@ -22,7 +23,7 @@ export default function FeaturedVehiclesSection() {
         setLoadState("loading")
         setErrorMessage("")
 
-        const response = await fetch("/api/vehicles/featured", {
+        const response = await fetch(apiUrl("/api/vehicles/featured"), {
           signal: abortController.signal,
         })
 

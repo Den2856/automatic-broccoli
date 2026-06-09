@@ -6,6 +6,7 @@ import PageHeroSkeleton from "../components/skeletons/PageHeroSkeleton"
 import VehicleCatalogSectionSkeleton from "../components/skeletons/VehicleCatalogSectionSkeleton"
 import VehicleCategoryPage from "./VehicleCategoryPage"
 import VehicleDetailPage from "./VehicleDetailPage"
+import { apiUrl } from "../utils/api"
 import type {
   VehicleCategoryPagePayload,
   VehicleCategoryPageResponse,
@@ -29,7 +30,7 @@ export default function VehicleSlugPage() {
         setErrorMessage("")
         setCategoryPayload(null)
 
-        const response = await fetch(`/api/vehicles/category/${slug}`, {
+        const response = await fetch(apiUrl(`/api/vehicles/category/${slug}`), {
           signal: abortController.signal,
         })
 

@@ -8,6 +8,8 @@ import type {
   BlogPostDetailPayload,
   BlogPostDetailResponse,
 } from "../types/blog"
+import { apiUrl } from "../utils/api"
+
 
 type LoadState = "idle" | "loading" | "success" | "error"
 
@@ -26,7 +28,7 @@ export default function BlogArticlePage() {
         setErrorMessage("")
         setPayload(null)
 
-        const response = await fetch(`/api/blog/${slug}`, {
+        const response = await fetch(apiUrl(`/api/blog/${slug}`), {
           signal: abortController.signal,
         })
 

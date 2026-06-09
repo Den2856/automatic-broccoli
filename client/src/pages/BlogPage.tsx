@@ -5,6 +5,8 @@ import BlogGridSection from "../components/blog/BlogGridSection"
 import PageHeroSkeleton from "../components/skeletons/PageHeroSkeleton"
 import BlogGridSectionSkeleton from "../components/skeletons/BlogGridSectionSkeleton"
 import type { BlogListResponse, BlogPostCard } from "../types/blog"
+import { apiUrl } from "../utils/api"
+
 
 type LoadState = "idle" | "loading" | "success" | "error"
 
@@ -23,7 +25,7 @@ export default function BlogPage() {
         setLoadState("loading")
         setErrorMessage("")
 
-        const response = await fetch("/api/blog", {
+        const response = await fetch(apiUrl("/api/blog"), {
           signal: abortController.signal,
         })
 
