@@ -2,7 +2,6 @@ const path = require("path");
 const fs = require("fs");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const webpack = require("webpack");
 const dotenv = require("dotenv");
 
 dotenv.config();
