@@ -11,9 +11,14 @@ import { errorHandler, notFoundHandler } from "./middleware/error.middleware.js"
 export function createApp() {
   const app = express();
 
+  const allowedOrigins = [
+    env.clientUrl,
+    "https://automatic-broccoli-8517.onrender.com"
+  ];
+
   app.use(
     cors({
-      origin: env.clientUrl
+      origin: allowedOrigins
     })
   );
   app.use(express.json());
